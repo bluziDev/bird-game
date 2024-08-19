@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfabvslrtec1l"]
+
+[ext_resource type="CylinderMesh" uid="uid://fugtby77m3p7" path="res://frag_mesh.tres" id="1_2pu0t"]
+[ext_resource type="Script" path="res://frag_spin.gd" id="2_24tcq"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.717636)
+fov = 90.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.892602, 0.450846, 0, -0.450846, 0.892602, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_2pu0t")
+script = ExtResource("2_24tcq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.594444, 0.565805, -0.571402, 0, 0.710578, 0.703618, 0.804137, -0.418261, 0.422399, 0, 0, 0)

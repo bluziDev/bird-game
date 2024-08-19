@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cli1p03lhfo4y"]
+
+[ext_resource type="Script" path="res://camera_controller.gd" id="1_ak270"]
+[ext_resource type="PackedScene" uid="uid://b5q2f0fbw75w2" path="res://camera_old.tscn" id="2_l2w0h"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ak270")
+rotation_speed = 20.0
+follow_speed_h = 10.0
+
+[node name="Camera" parent="." instance=ExtResource("2_l2w0h")]
+transform = Transform3D(1, 0, 1.67936e-08, 0, 1, 0, -1.67936e-08, 0, 1, 0, 0, 0)
+script = null

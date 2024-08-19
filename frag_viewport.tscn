@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ilhsmwapedkg"]
+
+[ext_resource type="CylinderMesh" uid="uid://fugtby77m3p7" path="res://frag_mesh.tres" id="1_mux1j"]
+[ext_resource type="Script" path="res://frag_spin.gd" id="2_hkvub"]
+
+[sub_resource type="World3D" id="World3D_qhqqn"]
+
+[node name="SubViewport" type="SubViewport"]
+world_3d = SubResource("World3D_qhqqn")
+transparent_bg = true
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.717636)
+fov = 90.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.892602, 0.450846, 0, -0.450846, 0.892602, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_mux1j")
+script = ExtResource("2_hkvub")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(0.594444, 0.565805, -0.571402, 0, 0.710578, 0.703618, 0.804137, -0.418261, 0.422399, 0, 0, 0)

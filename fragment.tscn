@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://s8msnuhb2fo6"]
+
+[ext_resource type="Script" path="res://frag_controller.gd" id="1_jm06o"]
+[ext_resource type="CylinderMesh" uid="uid://fugtby77m3p7" path="res://frag_mesh.tres" id="2_40syw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4qdk7"]
+height = 0.75
+radius = 0.2
+
+[node name="Area3D" type="Area3D" groups=["fragment"]]
+script = ExtResource("1_jm06o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_4qdk7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_40syw")

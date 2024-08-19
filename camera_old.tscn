@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5q2f0fbw75w2"]
+
+[ext_resource type="Script" path="res://camera_controller.gd" id="1_ak270"]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(1.55279, 0, 2.60769e-08, 0, 1.55279, 0, -2.60769e-08, 0, 1.55279, 0.0138381, 0, 3.20812)
+script = ExtResource("1_ak270")

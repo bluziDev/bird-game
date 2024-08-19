@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw37jljyk53jg"]
+
+[ext_resource type="PackedScene" uid="uid://ilhsmwapedkg" path="res://frag_viewport.tscn" id="1_jlrol"]
+
+[sub_resource type="World3D" id="World3D_2wkto"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" groups=["frag_counter"]]
+layout_mode = 0
+offset_left = 1025.0
+offset_top = 583.0
+offset_right = 1065.0
+offset_bottom = 606.0
+scale = Vector2(3.1557, 2.77069)
+text = "0"
+horizontal_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 512.0
+offset_right = 1428.0
+offset_bottom = 1024.0
+scale = Vector2(0.375145, 0.369318)
+
+[node name="SubViewport" parent="Control/SubViewportContainer" instance=ExtResource("1_jlrol")]
+world_3d = SubResource("World3D_2wkto")
+handle_input_locally = false
+render_target_update_mode = 4

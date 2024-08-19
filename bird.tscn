@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://vtvelxtr11lh"]
+
+[ext_resource type="Script" path="res://player_controller.gd" id="1_jr6x7"]
+[ext_resource type="PackedScene" uid="uid://dk3sueirekm1d" path="res://bird_mesh.tscn" id="2_aeiqx"]
+[ext_resource type="Script" path="res://camera_ray.gd" id="2_pgkm0"]
+[ext_resource type="Script" path="res://player_area_detection.gd" id="3_xhqmq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yhajb"]
+friction = 0.15
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vhwja"]
+radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rttl1"]
+radius = 0.3
+
+[node name="Bird" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_yhajb")
+lock_rotation = true
+script = ExtResource("1_jr6x7")
+frag_spawn_speed_offset = 0.1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_vhwja")
+
+[node name="Mesh" parent="." instance=ExtResource("2_aeiqx")]
+
+[node name="CamRay" type="RayCast3D" parent="."]
+script = ExtResource("2_pgkm0")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("3_xhqmq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_rttl1")

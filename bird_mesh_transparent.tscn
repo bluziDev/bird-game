@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0kuv0g3v5u2f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ogpj"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.345098, 0.607843, 0.309804, 0.576471)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sat0c"]
+material = SubResource("StandardMaterial3D_6ogpj")
+radius = 0.3
+height = 0.6
+
+[node name="Mesh" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_sat0c")
+skeleton = NodePath("../..")
