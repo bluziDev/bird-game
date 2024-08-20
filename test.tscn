@@ -1,18 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce52c1v7ljrnw"]
+[gd_scene load_steps=6 format=3 uid="uid://ce52c1v7ljrnw"]
 
 [ext_resource type="PackedScene" uid="uid://qas1rx7ds0pg" path="res://test_level.tscn" id="1_5dn7l"]
 [ext_resource type="PackedScene" uid="uid://dw37jljyk53jg" path="res://frag_hud.tscn" id="2_0kedf"]
+[ext_resource type="Script" path="res://pause_controller.gd" id="3_hhq3e"]
+[ext_resource type="PackedScene" uid="uid://rw7gdui8lu3n" path="res://addons/EasyMenus/Scenes/pause_menu.tscn" id="4_feieo"]
 
 [sub_resource type="Environment" id="Environment_vrrjd"]
 ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="Node3D" type="Node3D"]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1856, 4.86842, 0)
-light_energy = 1.485
-shadow_enabled = true
-omni_range = 8.01747
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vrrjd")
@@ -21,3 +17,10 @@ environment = SubResource("Environment_vrrjd")
 unique_name_in_owner = true
 
 [node name="HUD" parent="." instance=ExtResource("2_0kedf")]
+
+[node name="Pause" type="Node" parent="."]
+script = ExtResource("3_hhq3e")
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_feieo")]
+
+[connection signal="back_to_main_pressed" from="PauseMenu" to="Pause" method="_load_main_menu"]

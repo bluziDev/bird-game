@@ -7,12 +7,15 @@ extends RigidBody3D
 @onready var flapping : bool = false
 @onready var cam_ray : RayCast3D = get_node("CamRay")
 @onready var spawn_pad : AnimatableBody3D
-@onready var fragments : int = 0
+@export var fragments : int = 0
+var start_frags : int
 @export var frag_spawn_speed_offset : float = 1
 @onready var frag_scene = load("res://fragment.tscn") as PackedScene
 @onready var frag_counter = get_tree().get_nodes_in_group("frag_counter")[0]
+@onready var pause_controller : Node = get_parent().get_parent().get_node("Pause")
 
 func _ready():
+	start_frags = fragments
 	cam.target = get_node("Mesh")
 	cam_ray.target = cam
 	cam.cam_ray = cam_ray
@@ -44,9 +47,13 @@ func _on_touch_spike(obj):
 			frag_counter.text = str(fragments)
 		global_transform.origin = spawn_pad.global_transform.origin + Vector3(0,spawn_pad.spawn_height,0)
 	if obj.is_in_group("pad"):
-		spawn_pad._remove_checkpoint()
-		spawn_pad = obj.get_parent()
-		spawn_pad._set_checkpoint()
+		var pad_obj : AnimatableBody3D = obj.get_parent()
+		if pad_obj.spawns_player && fragments > start_frags:
+			pause_controller._load_main_menu()
+		else:
+			spawn_pad._remove_checkpoint()
+			spawn_pad = pad_obj
+			spawn_pad._set_checkpoint()
 	if obj.is_in_group("fragment"):
 		fragments = obj.quantity
 		frag_counter.text = str(fragments)
